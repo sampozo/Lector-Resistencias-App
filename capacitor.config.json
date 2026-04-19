@@ -1,0 +1,6 @@
+{
+  "appId": "com.antigravity.lectorresistencias",
+  "appName": "ResistorVision",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
