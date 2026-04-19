@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Setup Java
         uses: actions/setup-java@v3
@@ -34,15 +33,10 @@ jobs:
       - name: Build Web App
         run: |
           npm run build
-          ls -R dist || echo "Build output folder missing!"
+          ls -la dist
 
       - name: Add Capacitor Android
-        run: |
-          if [ ! -d "android" ]; then
-            npx cap add android
-          else
-            echo "Android folder already exists, skipping add."
-          fi
+        run: npx cap add android
 
       - name: Sync Capacitor
         run: npx cap sync android
@@ -69,4 +63,5 @@ jobs:
           name: "Lector Resistencias Build ${{ github.run_number }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
